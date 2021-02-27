@@ -59,154 +59,34 @@ When
                                                         (Role "Customer")
                                                     ))
                                             )
-                                            (Pay
-                                                (Role "Customer")
-                                                (Party (Role "Bank"))
-                                                (Token "" "")
-                                                (Constant 50)
-                                                (When
-                                                    [Case
-                                                        (Choice
-                                                            (ChoiceId
-                                                                "PaymentConfirmation"
-                                                                (Role "Customer")
-                                                            )
-                                                            [Bound 0 1]
-                                                        )
-                                                        (If
-                                                            (ValueEQ
-                                                                (ChoiceValue
-                                                                    (ChoiceId
-                                                                        "PaymentConfirmation"
-                                                                        (Role "Customer")
-                                                                    ))
-                                                                (Constant 1)
-                                                            )
-                                                            (When
-                                                                [Case
-                                                                    (Choice
-                                                                        (ChoiceId
-                                                                            "PaymentConfirmation"
-                                                                            (Role "Agent")
-                                                                        )
-                                                                        [Bound 0 1]
-                                                                    )
-                                                                    (If
-                                                                        (ValueEQ
-                                                                            (ChoiceValue
-                                                                                (ChoiceId
-                                                                                    "PaymentConfirmation"
-                                                                                    (Role "Agent")
-                                                                                ))
-                                                                            (ChoiceValue
-                                                                                (ChoiceId
-                                                                                    "PaymentConfirmation"
-                                                                                    (Role "Customer")
-                                                                                ))
-                                                                        )
-                                                                        (Pay
-                                                                            (Role "Customer")
-                                                                            (Party (Role "Bank"))
-                                                                            (Token "" "")
-                                                                            (Constant 50)
-                                                                            (Pay
-                                                                                (Role "Bank")
-                                                                                (Party (Role "Customer"))
-                                                                                (Token "" "USD")
-                                                                                (Constant 1000)
-                                                                                Close 
-                                                                            )
-                                                                        )
-                                                                        (When
-                                                                            [Case
-                                                                                (Choice
-                                                                                    (ChoiceId
-                                                                                        "PaymentConfirmation"
-                                                                                        (Role "Bank")
-                                                                                    )
-                                                                                    [Bound 0 1]
-                                                                                )
-                                                                                (If
-                                                                                    (ValueEQ
-                                                                                        (ChoiceValue
-                                                                                            (ChoiceId
-                                                                                                "PaymentConfirmation"
-                                                                                                (Role "Bank")
-                                                                                            ))
-                                                                                        (ChoiceValue
-                                                                                            (ChoiceId
-                                                                                                "PaymentConfirmation"
-                                                                                                (Role "Customer")
-                                                                                            ))
-                                                                                    )
-                                                                                    (Pay
-                                                                                        (Role "Customer")
-                                                                                        (Party (Role "Bank"))
-                                                                                        (Token "" "")
-                                                                                        (Constant 50)
-                                                                                        (Pay
-                                                                                            (Role "Bank")
-                                                                                            (Party (Role "Customer"))
-                                                                                            (Token "" "USD")
-                                                                                            (Constant 1000)
-                                                                                            Close 
-                                                                                        )
-                                                                                    )
-                                                                                    (Pay
-                                                                                        (Role "Customer")
-                                                                                        (Party (Role "Bank"))
-                                                                                        (Token "" "USD")
-                                                                                        (Constant 1000)
-                                                                                        Close 
-                                                                                    )
-                                                                                )]
-                                                                            45
-                                                                            (Pay
-                                                                                (Role "Customer")
-                                                                                (Party (Role "Bank"))
-                                                                                (Token "" "")
-                                                                                (Constant 50)
-                                                                                (Pay
-                                                                                    (Role "Bank")
-                                                                                    (Party (Role "Customer"))
-                                                                                    (Token "" "USD")
-                                                                                    (Constant 1000)
-                                                                                    Close 
-                                                                                )
-                                                                            )
-                                                                        )
-                                                                    )]
-                                                                45
-                                                                (Pay
-                                                                    (Role "Customer")
-                                                                    (Party (Role "Bank"))
-                                                                    (Token "" "")
-                                                                    (Constant 50)
-                                                                    (Pay
-                                                                        (Role "Bank")
-                                                                        (Party (Role "Customer"))
-                                                                        (Token "" "USD")
-                                                                        (Constant 1000)
-                                                                        Close 
-                                                                    )
-                                                                )
-                                                            )
-                                                            (Pay
-                                                                (Role "Customer")
-                                                                (Party (Role "Bank"))
-                                                                (Token "" "USD")
-                                                                (Constant 1000)
-                                                                Close 
-                                                            )
-                                                        )]
-                                                    30
+                                            (When
+                                                [Case
+                                                    (Deposit
+                                                        (Role "Bank")
+                                                        (Role "Customer")
+                                                        (Token "" "")
+                                                        (Constant 100)
+                                                    )
                                                     (Pay
                                                         (Role "Customer")
-                                                        (Party (Role "Bank"))
-                                                        (Token "" "USD")
-                                                        (Constant 1000)
-                                                        Close 
-                                                    )
+                                                        (Account (Role "Bank"))
+                                                        (Token "" "")
+                                                        (Constant 100)
+                                                        (Pay
+                                                            (Role "Bank")
+                                                            (Party (Role "Customer"))
+                                                            (Token "" "USD")
+                                                            (Constant 1000)
+                                                            Close 
+                                                        )
+                                                    )]
+                                                30
+                                                (Pay
+                                                    (Role "Bank")
+                                                    (Party (Role "Customer"))
+                                                    (Token "" "USD")
+                                                    (Constant 1000)
+                                                    Close 
                                                 )
                                             )
                                             (When
@@ -231,11 +111,28 @@ When
                                                                     (Role "Customer")
                                                                 ))
                                                         )
-                                                        (Pay
-                                                            (Role "Customer")
-                                                            (Party (Role "Bank"))
-                                                            (Token "" "")
-                                                            (Constant 50)
+                                                        (When
+                                                            [Case
+                                                                (Deposit
+                                                                    (Role "Bank")
+                                                                    (Role "Customer")
+                                                                    (Token "" "")
+                                                                    (Constant 100)
+                                                                )
+                                                                (Pay
+                                                                    (Role "Customer")
+                                                                    (Account (Role "Bank"))
+                                                                    (Token "" "")
+                                                                    (Constant 100)
+                                                                    (Pay
+                                                                        (Role "Bank")
+                                                                        (Party (Role "Customer"))
+                                                                        (Token "" "USD")
+                                                                        (Constant 1000)
+                                                                        Close 
+                                                                    )
+                                                                )]
+                                                            30
                                                             (Pay
                                                                 (Role "Bank")
                                                                 (Party (Role "Customer"))
@@ -252,12 +149,29 @@ When
                                                             Close 
                                                         )
                                                     )]
-                                                45
-                                                (Pay
-                                                    (Role "Customer")
-                                                    (Party (Role "Bank"))
-                                                    (Token "" "")
-                                                    (Constant 50)
+                                                55
+                                                (When
+                                                    [Case
+                                                        (Deposit
+                                                            (Role "Bank")
+                                                            (Role "Customer")
+                                                            (Token "" "")
+                                                            (Constant 100)
+                                                        )
+                                                        (Pay
+                                                            (Role "Customer")
+                                                            (Account (Role "Bank"))
+                                                            (Token "" "")
+                                                            (Constant 100)
+                                                            (Pay
+                                                                (Role "Bank")
+                                                                (Party (Role "Customer"))
+                                                                (Token "" "USD")
+                                                                (Constant 1000)
+                                                                Close 
+                                                            )
+                                                        )]
+                                                    30
                                                     (Pay
                                                         (Role "Bank")
                                                         (Party (Role "Customer"))
@@ -269,169 +183,49 @@ When
                                             )
                                         )]
                                     45
-                                    (Pay
-                                        (Role "Customer")
-                                        (Party (Role "Bank"))
-                                        (Token "" "")
-                                        (Constant 50)
-                                        (When
-                                            [Case
-                                                (Choice
-                                                    (ChoiceId
-                                                        "PaymentConfirmation"
-                                                        (Role "Customer")
-                                                    )
-                                                    [Bound 0 1]
-                                                )
-                                                (If
-                                                    (ValueEQ
-                                                        (ChoiceValue
-                                                            (ChoiceId
-                                                                "PaymentConfirmation"
-                                                                (Role "Customer")
-                                                            ))
-                                                        (Constant 1)
-                                                    )
-                                                    (When
-                                                        [Case
-                                                            (Choice
-                                                                (ChoiceId
-                                                                    "PaymentConfirmation"
-                                                                    (Role "Agent")
-                                                                )
-                                                                [Bound 0 1]
-                                                            )
-                                                            (If
-                                                                (ValueEQ
-                                                                    (ChoiceValue
-                                                                        (ChoiceId
-                                                                            "PaymentConfirmation"
-                                                                            (Role "Agent")
-                                                                        ))
-                                                                    (ChoiceValue
-                                                                        (ChoiceId
-                                                                            "PaymentConfirmation"
-                                                                            (Role "Customer")
-                                                                        ))
-                                                                )
-                                                                (Pay
-                                                                    (Role "Customer")
-                                                                    (Party (Role "Bank"))
-                                                                    (Token "" "")
-                                                                    (Constant 50)
-                                                                    (Pay
-                                                                        (Role "Bank")
-                                                                        (Party (Role "Customer"))
-                                                                        (Token "" "USD")
-                                                                        (Constant 1000)
-                                                                        Close 
-                                                                    )
-                                                                )
-                                                                (When
-                                                                    [Case
-                                                                        (Choice
-                                                                            (ChoiceId
-                                                                                "PaymentConfirmation"
-                                                                                (Role "Bank")
-                                                                            )
-                                                                            [Bound 0 1]
-                                                                        )
-                                                                        (If
-                                                                            (ValueEQ
-                                                                                (ChoiceValue
-                                                                                    (ChoiceId
-                                                                                        "PaymentConfirmation"
-                                                                                        (Role "Bank")
-                                                                                    ))
-                                                                                (ChoiceValue
-                                                                                    (ChoiceId
-                                                                                        "PaymentConfirmation"
-                                                                                        (Role "Customer")
-                                                                                    ))
-                                                                            )
-                                                                            (Pay
-                                                                                (Role "Customer")
-                                                                                (Party (Role "Bank"))
-                                                                                (Token "" "")
-                                                                                (Constant 50)
-                                                                                (Pay
-                                                                                    (Role "Bank")
-                                                                                    (Party (Role "Customer"))
-                                                                                    (Token "" "USD")
-                                                                                    (Constant 1000)
-                                                                                    Close 
-                                                                                )
-                                                                            )
-                                                                            (Pay
-                                                                                (Role "Customer")
-                                                                                (Party (Role "Bank"))
-                                                                                (Token "" "USD")
-                                                                                (Constant 1000)
-                                                                                Close 
-                                                                            )
-                                                                        )]
-                                                                    45
-                                                                    (Pay
-                                                                        (Role "Customer")
-                                                                        (Party (Role "Bank"))
-                                                                        (Token "" "")
-                                                                        (Constant 50)
-                                                                        (Pay
-                                                                            (Role "Bank")
-                                                                            (Party (Role "Customer"))
-                                                                            (Token "" "USD")
-                                                                            (Constant 1000)
-                                                                            Close 
-                                                                        )
-                                                                    )
-                                                                )
-                                                            )]
-                                                        45
-                                                        (Pay
-                                                            (Role "Customer")
-                                                            (Party (Role "Bank"))
-                                                            (Token "" "")
-                                                            (Constant 50)
-                                                            (Pay
-                                                                (Role "Bank")
-                                                                (Party (Role "Customer"))
-                                                                (Token "" "USD")
-                                                                (Constant 1000)
-                                                                Close 
-                                                            )
-                                                        )
-                                                    )
-                                                    (Pay
-                                                        (Role "Customer")
-                                                        (Party (Role "Bank"))
-                                                        (Token "" "USD")
-                                                        (Constant 1000)
-                                                        Close 
-                                                    )
-                                                )]
-                                            30
+                                    (When
+                                        [Case
+                                            (Deposit
+                                                (Role "Bank")
+                                                (Role "Customer")
+                                                (Token "" "")
+                                                (Constant 100)
+                                            )
                                             (Pay
                                                 (Role "Customer")
-                                                (Party (Role "Bank"))
-                                                (Token "" "USD")
-                                                (Constant 1000)
-                                                Close 
-                                            )
+                                                (Account (Role "Bank"))
+                                                (Token "" "")
+                                                (Constant 100)
+                                                (Pay
+                                                    (Role "Bank")
+                                                    (Party (Role "Customer"))
+                                                    (Token "" "USD")
+                                                    (Constant 1000)
+                                                    Close 
+                                                )
+                                            )]
+                                        65
+                                        (Pay
+                                            (Role "Bank")
+                                            (Party (Role "Customer"))
+                                            (Token "" "USD")
+                                            (Constant 1000)
+                                            Close 
                                         )
                                     )
                                 )
                                 (Pay
-                                    (Role "Customer")
-                                    (Party (Role "Bank"))
+                                    (Role "Bank")
+                                    (Party (Role "Customer"))
                                     (Token "" "USD")
                                     (Constant 1000)
                                     Close 
                                 )
                             )]
-                        30
+                        25
                         (Pay
-                            (Role "Customer")
-                            (Party (Role "Bank"))
+                            (Role "Bank")
+                            (Party (Role "Customer"))
                             (Token "" "USD")
                             (Constant 1000)
                             Close 
