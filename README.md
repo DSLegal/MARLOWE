@@ -1,4 +1,4 @@
-# MARLOWE
+# Marlowe - Simple Loan Agreement
 
 This simple contract is to capture an ADA100 loan given by the Bank to its Customer secured by USD1,000 security. 
 
