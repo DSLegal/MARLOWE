@@ -1,26 +1,29 @@
-# Marlowe - Simple Loan Agreement
+# Marlowe - Simple Swap Agreement
 
-This simple contract is to capture an ADA100 loan given by the Bank to its Customer secured by USD1,000 security. 
+This swap contract is to capture a currency swap arrangement to swap USD1,000 for ADA100 for a specified tenure and the Customer shall pay two [monthly / quaterly] swap fee payment of ADA10 each. 
 
-Steps
-1. Customer to deposit USD1000 into the contract.
+This arrangement is secured by USD500 given by the Customer to the Bank as security.
 
-2. Bank to deposit ADA100 into the contract.
+**Repayment**
 
-3. The contract release ADA100 to the Customer. 
+(i) The Customer shall repay the ADA100 to the Bank on :
 
-4. On the repayment date:
+  (a) the end of the swap arrangement; or
+  
+  (b) in the event the Customer fails to meet any of its interest payment, the due date of such interest payment. 
 
-a. Customer confirms that ADA100 has been returned to the Bank;
+(ii) If the Customer repay the Bank pursuant to (a), upon the Bank receiving the ADA100, the Bank shall return the USD1,000 plus the USD500 security to the Customer.
 
-b. Agent (Bank's agent) to check if the money has been received and to either confirm or deny the Customer's confirmation
+(iii) If the Customer fails to repay the Bank pursuant to (a), the Bank shall be entitled to charge USD200 on the Customer as penalty and will return the balance USD amount to the Customer after deducting the principal swap amount (i.e. USD1,000) and the penalty fee. 
 
-c. If the Agent confirms that the Customer's confirmation is correct, the Contract will release the USD1,000 to the Customer.
+(iv) If the Customer repay the Bank pursuant to (b), upon the Bank receiving the ADA100, the Bank shall return the USD1,000 plus the USD500 security to the Customer.
 
-c1. If the Agent does not confirm or deny within a stipulated time, the Contract will release the USD1,000 to the Customer.
+(v) If the Customer fails to repay the Bank pursuant to (b), the Bank shall be entitled to charge USD200 on the Customer as penalty and will return the balance USD amount to the Customer after deducting the principal swap amount and the penalty fee. 
 
-d. If the Agent denies the Customer's confirmation, the confirmation is escalated to the Bank directly for the Bank to confirm.  
+**Interest Payment**
 
-e. If the Bank confirms that the Customer's confirmation is correct, the Contract will release the USD1,000 to the Customer.
+The Customer shall pay two interest payment of ADA10 each. 
 
-f. If the Bank denies the Customer's confirmation, the Contract will release the USD1,000 to the Bank.
+In the event the Customer fails to meet any of its interest payment the Bank shall be entitled to claim USD100 for each interest payment from the security. 
+  
+
