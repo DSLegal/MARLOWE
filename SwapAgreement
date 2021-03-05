@@ -1,47 +1,172 @@
 When
     [Case
         (Deposit
-            (Role "Bank")
             (Role "Customer")
-            (Token "" "")
-            (Constant 10)
+            (Role "Customer")
+            (Token "" "USD")
+            (Constant 1500)
         )
         (When
             [Case
                 (Deposit
                     (Role "Bank")
-                    (Role "Customer")
+                    (Role "Bank")
                     (Token "" "")
                     (Constant 100)
                 )
-                (When
-                    [Case
-                        (Deposit
-                            (Role "Bank")
-                            (Role "Bank")
-                            (Token "" "USD")
-                            (Constant 1000)
-                        )
-                        (Pay
-                            (Role "Bank")
-                            (Party (Role "Customer"))
-                            (Token "" "USD")
-                            (Constant 1000)
-                            Close 
-                        )]
-                    50
+                (Pay
+                    (Role "Bank")
+                    (Party (Role "Customer"))
+                    (Token "" "")
+                    (Constant 100)
                     (Pay
-                        (Role "Bank")
-                        (Party (Role "Bank"))
+                        (Role "Customer")
+                        (Account (Role "Bank"))
                         (Token "" "USD")
-                        (AvailableMoney
-                            (Role "Customer")
-                            (Token "" "USD")
+                        (Constant 1500)
+                        (When
+                            [Case
+                                (Deposit
+                                    (Role "Bank")
+                                    (Role "Customer")
+                                    (Token "" "")
+                                    (Constant 10)
+                                )
+                                (When
+                                    [Case
+                                        (Deposit
+                                            (Role "Bank")
+                                            (Role "Customer")
+                                            (Token "" "")
+                                            (Constant 10)
+                                        )
+                                        (When
+                                            [Case
+                                                (Deposit
+                                                    (Role "Bank")
+                                                    (Role "Customer")
+                                                    (Token "" "")
+                                                    (Constant 100)
+                                                )
+                                                (Pay
+                                                    (Role "Bank")
+                                                    (Party (Role "Customer"))
+                                                    (Token "" "USD")
+                                                    (AvailableMoney
+                                                        (Role "Bank")
+                                                        (Token "" "USD")
+                                                    )
+                                                    Close 
+                                                )]
+                                            65
+                                            (Pay
+                                                (Role "Bank")
+                                                (Party (Role "Bank"))
+                                                (Token "" "USD")
+                                                (Constant 1200)
+                                                (Pay
+                                                    (Role "Bank")
+                                                    (Party (Role "Customer"))
+                                                    (Token "" "USD")
+                                                    (AvailableMoney
+                                                        (Role "Bank")
+                                                        (Token "" "USD")
+                                                    )
+                                                    Close 
+                                                )
+                                            )
+                                        )]
+                                    55
+                                    (Pay
+                                        (Role "Bank")
+                                        (Party (Role "Bank"))
+                                        (Token "" "USD")
+                                        (Constant 100)
+                                        (When
+                                            [Case
+                                                (Deposit
+                                                    (Role "Bank")
+                                                    (Role "Customer")
+                                                    (Token "" "")
+                                                    (Constant 100)
+                                                )
+                                                (Pay
+                                                    (Role "Bank")
+                                                    (Party (Role "Customer"))
+                                                    (Token "" "USD")
+                                                    (AvailableMoney
+                                                        (Role "Bank")
+                                                        (Token "" "USD")
+                                                    )
+                                                    Close 
+                                                )]
+                                            100
+                                            (Pay
+                                                (Role "Bank")
+                                                (Party (Role "Bank"))
+                                                (Token "" "USD")
+                                                (Constant 1200)
+                                                (Pay
+                                                    (Role "Bank")
+                                                    (Party (Role "Bank"))
+                                                    (Token "" "USD")
+                                                    (AvailableMoney
+                                                        (Role "Bank")
+                                                        (Token "" "USD")
+                                                    )
+                                                    Close 
+                                                )
+                                            )
+                                        )
+                                    )
+                                )]
+                            30
+                            (Pay
+                                (Role "Bank")
+                                (Party (Role "Bank"))
+                                (Token "" "USD")
+                                (Constant 100)
+                                (When
+                                    [Case
+                                        (Deposit
+                                            (Role "Bank")
+                                            (Role "Customer")
+                                            (Token "" "")
+                                            (Constant 100)
+                                        )
+                                        (Pay
+                                            (Role "Bank")
+                                            (Party (Role "Customer"))
+                                            (Token "" "USD")
+                                            (AvailableMoney
+                                                (Role "Bank")
+                                                (Token "" "USD")
+                                            )
+                                            Close 
+                                        )]
+                                    35
+                                    (Pay
+                                        (Role "Bank")
+                                        (Party (Role "Bank"))
+                                        (Token "" "USD")
+                                        (Constant 1200)
+                                        (Pay
+                                            (Role "Bank")
+                                            (Party (Role "Customer"))
+                                            (Token "" "USD")
+                                            (AvailableMoney
+                                                (Role "Bank")
+                                                (Token "" "USD")
+                                            )
+                                            Close 
+                                        )
+                                    )
+                                )
+                            )
                         )
-                        Close 
                     )
                 )]
-            45
+            20
             (Pay
                 (Role "Customer")
                 (Party (Role "Customer"))
@@ -53,14 +178,4 @@ When
                 Close 
             )
         )]
-    40
-    (Pay
-        (Role "Bank")
-        (Party (Role "Bank"))
-        (Token "" "USD")
-        (AvailableMoney
-            (Role "Customer")
-            (Token "" "USD")
-        )
-        Close 
-    )
+    15 Close 
