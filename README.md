@@ -1,4 +1,4 @@
-# Marlowe - Simple Swap Agreement
+# Marlowe - ADA / USD Swap Agreement
 
 This swap contract is to capture a currency swap arrangement to swap USD1,000 for ADA100 for a specified tenure and the Customer shall pay two [monthly / quaterly] swap fee payment of ADA10 each. 
 
